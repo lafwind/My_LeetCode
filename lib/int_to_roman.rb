@@ -20,5 +20,3 @@ def int_to_roman(num)
 
   ret
 end
-
-puts int_to_roman(3321)
