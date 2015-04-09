@@ -14,14 +14,10 @@ class ListNode
 end
 
 def add_two_numbers(l1, l2)
-  if l1 != nil || l2 != nil
-    return l1 if l2 == nil
-    return l2 if l1 == nil
-    tmp = l1.val + l2.val > 9 ? 1 : 0
-    v = (l1.val + l2.val) % 10
-    root = ans = ListNode.new(v)
-    l1, l2 = l1.next, l2.next
-  end
+  tmp = l1.val + l2.val > 9 ? 1 : 0
+  v = (l1.val + l2.val) % 10
+  root = ans = ListNode.new(v)
+  l1, l2 = l1.next, l2.next
 
   while l1 != nil && l2 != nil
     v = (l1.val + l2.val + tmp) % 10
