@@ -32,10 +32,18 @@
 
 -- MySQL
 
--- solution
+-- solution 1
 
 SELECT d.Name, e1.Name, e1.Salary
 FROM Employee e1 JOIN Department d ON e1.DepartmentId = d.Id
 WHERE e1.Salary = (SELECT MAX(Salary)
       		  FROM Employee e2
 		  WHERE e2.DepartmentId = e1.DepartmentId)
+
+-- solution 2
+
+SELECT d.Name, e.Name, e.Salary
+FROM Employee e, Department d
+WHERE e.DepartmentId = d.Id
+AND (e.DepartmentId, e.Salary) IN (SELECT DepartmentId, MAX(Salary) AS max
+    		   	      FROM Employee GROUP BY DepartmentId)
